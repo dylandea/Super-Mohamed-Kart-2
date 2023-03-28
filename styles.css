@@ -1,28 +1,60 @@
 html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+	height: auto;
+	max-width: 100%;
+	overflow: hidden;
 }
 
-.content {
-    position: absolute;
-    background: url("image/route.png") no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+body {
+	position: absolute;
+	overflow: hidden;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	cursor: default;
+	user-select: none;
+	box-sizing: content-box;
 }
 
-.image_momo {
+.graphics {
+    position: fixed;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+	height: 100%;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	box-shadow: inset black 0 0 40px 5px;
+    /* animation: slide 5s linear infinite; */
+}
+
+.sliding-background {
+	position: absolute;
+	background: url("image/route.png") repeat-x;
+    background-size : contain;
+	height: 100%;
+	width: 7000px;
+	animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-1692px, 0, 0);
+	}
+}
+
+#momo {
     position: absolute;
-    width: 240px;
-    height: 150px;
+    height: 15%;
+	width: 15%;
     background: url("image/momo.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
     margin: 0;
     padding: 0;
 }
+
