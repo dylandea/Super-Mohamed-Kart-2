@@ -1,4 +1,11 @@
 const momo = document.querySelector("#momo");
+const homePage = document.querySelector("#homePage");
+const play = document.querySelector("#homePage");
+
+play.style.cssText= `opacity: 0;`;
+
+
+// momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
 // const momo_content = document.querySelector(".momo_content");
 let height, width;
 
