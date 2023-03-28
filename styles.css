@@ -1,0 +1,28 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.content {
+    position: absolute;
+    background: url("image/route.png") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.image_momo {
+    position: absolute;
+    width: 240px;
+    height: 150px;
+    background: url("image/momo.png") no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
