@@ -1,6 +1,10 @@
 const momo = document.querySelector("#momo");
-// const momo_content = document.querySelector(".momo_content");
+const div_game = document.querySelector(".game");
+const gamesItems = document.querySelector(".game_items");
+let enemySpeed = 1;
 let height, width;
+let resize_Frame = 135;
+let end_game = false;
 
 function window_dimension() {
     height = window.innerHeight;
@@ -18,16 +22,10 @@ let pull_pressed = false;
 function keyDownHandler(e) {
     if (e.keyCode == 37) {
         right_pressed = true;
-        // move DOWN ///////////
-        //console.log("droite");
     } else if (e.keyCode == 39) {
         left_pressed = true;
-        // move UP ///////////
-        //console.log("gauche");
     } else if (e.keyCode == 32) {
         pull_pressed = true;
-        // PULL ///////////
-        console.log('pull')
     }
 }
 // MOVE keyboard key control
@@ -36,17 +34,10 @@ function keyDownHandler(e) {
 function keyUpHandler(e) {
     if (e.keyCode == 37) {
         right_pressed = false;
-
-        // move STOP DOWN ///////////
-        //console.log("stop droite");
     } else if (e.keyCode == 39) {
         left_pressed = false;
-        // move STOP UP ///////////
-        //console.log("stop gauche");
     } else if (e.keyCode == 32) {
         pull_pressed = false;
-        // STOP PULL ///////////
-        //console.log('pull stop')
     }
 }
 // key control keyboard STOP
@@ -64,46 +55,36 @@ function position() {
     momo_position_top = Math.round(momo_position.top);
     momo_position_bottom = Math.round(momo_position.bottom);
 
-    console.log("y: " + momo_position.y);
-    console.log("x: " + momo_position_X);
-    console.log("y: " + momo_position_Y);
-    console.log("top: " + momo_position_top);
-    console.log("bottom: " + momo_position_bottom);
-
-    if (momo_position_top <= 300) {
+    if (momo_position_top <= Math.round(height*32/100)) {
         right_pressed = false;
     } else if (momo_position_bottom >= height) {
         left_pressed = false;
     }
 }
-let positionY, move_frame, speedMomo;
+let move_frame;
 
 // ==================================================================================
 
 // ==================================================================================
 
-positionY = 330;
-speedMomo = 2;
+let positionY = 250;
+let speedMomo = 7;
 
 function move() {
-
-    momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
-
+    
+    momo.style.cssText += `transform: translateY(${positionY}px); left: 50px;`;
+    
+    
     position();
     if (right_pressed) {
         positionY -= speedMomo;
-
-
-        console.log("height " + height, "width " + width);
     } else if (left_pressed) {
         positionY += speedMomo;
-
-        console.log("height " + height, "width " + width);
     }
     window_dimension();
 
-
-
+    updateScore();
+    handleCrash();
 
 
 
@@ -111,3 +92,25 @@ function move() {
 };
 
 move();
+
+//délai avant première apparition des ennemies, donc délai avant début du jeu
+setTimeout(() => {
+    generateEnemy();
+}, 2000);
+
+
+function clear_game() {
+    end_game = true;
+    gamesItems.style.opacity = 0;
+
+        const enemies = document.querySelectorAll(`.enemy`);
+        for (let i = 0; i < enemies.length; i++) {
+            enemies[i].remove();
+        }
+
+
+    cancelAnimationFrame(enemy_animation_frame);
+    cancelAnimationFrame(move_frame);
+    
+}
+

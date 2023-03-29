@@ -16,27 +16,13 @@ body {
 	box-sizing: content-box;
 }
 
-.graphics {
-    position: fixed;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	z-index: 0;
-	height: 100%;
-	width: auto;
-	margin: 0;
-	padding: 0;
-	box-shadow: inset black 0 0 40px 5px;
-    /* animation: slide 5s linear infinite; */
-}
-
 .sliding-background {
 	position: absolute;
 	background: url("image/route.png") repeat-x;
     background-size : contain;
 	height: 100%;
-	width: 7000px;
-	animation: slide 5s linear infinite;
+	width: 20000px;
+	animation: slide 30s linear infinite;
 }
 
 @keyframes slide {
@@ -44,17 +30,16 @@ body {
 		transform: translate3d(0, 0, 0);
 	}
 	100% {
-		transform: translate3d(-1692px, 0, 0);
+		transform: translate3d(-9000px, 0, 0);
 	}
 }
 
 #momo {
     position: absolute;
-    height: 15%;
-	width: 15%;
+    height: 14%;
+	width: 18%;
     background: url("image/momo.png") no-repeat;
     background-size: contain;
     margin: 0;
     padding: 0;
 }
-
