@@ -8,11 +8,6 @@ function checkIfTwoRectIntersect(r1, x, r2) {
     r1 = r1.getBoundingClientRect(); 
     r2 = r2.getBoundingClientRect(); 
 
-    console.log( r2.left > r1.right + x ||
-        r2.right < r1.left - x||
-        r2.top > r1.bottom + x ||
-        r2.bottom < r1.top -x)
-
     return !(
         r2.left > r1.right - 50 ||
         r2.right < r1.left + 150||
@@ -51,8 +46,6 @@ function handleCrash() {
                 vY,
                 100
             );
-
-            console.log("explosion1", explosion1)
 
             const explosion2 = new Start_explose();
             explosion2.explose(

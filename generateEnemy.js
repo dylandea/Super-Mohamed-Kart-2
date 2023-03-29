@@ -9,17 +9,14 @@ let posEnnemis_X,
 
 function enemy_counter_function() {
 	const enemy_counter = document.querySelectorAll(`.enemy`).length;
-    console.log("là")
     
 	if (enemy_counter == 0 && end_game === false) {
 		cancelAnimationFrame(enemy_animation_frame);
-        console.log("prout!!!")
 		generateEnemy();
 	}
 }
 
 function generateEnemy() {
-	let id = 0;
 	let enemy;
 
 	size_content_top = div_game.getBoundingClientRect().top;
@@ -28,7 +25,7 @@ function generateEnemy() {
     size_content_right = div_game.getBoundingClientRect().right;
 
 	const numberOfEnemiesAtTheSameTimeOnTheScreen = 3;
-    const possibleEnemiesPositions = [Math.round(height*41/100), Math.round(height*55/100), Math.round(height*71/100), Math.round(height*83/100)]; //à changer pour correspondre avec les voies de l'autoroute
+    const possibleEnemiesPositions = [Math.round(height*38/100), Math.round(height*55/100), Math.round(height*69/100), Math.round(height*82/100)]; //à changer pour correspondre avec les voies de l'autoroute
     const possibleEnemiesCharacters = ["benoit", "dylan", "chris", "nicolas"];
 
 	for (let i = 0; i < numberOfEnemiesAtTheSameTimeOnTheScreen; i++) {
@@ -54,27 +51,35 @@ function generateEnemy() {
         top: ${posEnnemis_Y}px; 
         left: ${posEnnemis_X}px;
         `;
-console.log("i", i)
+        if (character=="chris") {
+            enemy.style.height = "21%";
+            enemy.style.width =  "23%"
+        } else if (character=="dylan") {
+            enemy.style.height = "17%";
+            enemy.style.width =  "19%"
+        } else if (character=="nicolas") {
+            enemy.style.height = "17%";
+            enemy.style.width =  "19%"
+        } 
 	}
 
 
 	
 
 
-    enemies = document.querySelectorAll(`.enemy`);
+    let existingEnemies = document.querySelectorAll(`.enemy`);
 
     let move_translate_X = 0;
 
-    for (let i = 0; i < enemies.length; i++) {
+    for (let i = 0; i < existingEnemies.length; i++) {
         function moveX() {
-            enemies[i].style.transform = `translateX(${(move_translate_X-=enemySpeed)}px)`;
-
+            existingEnemies[i].style.transform = `translateX(${(move_translate_X-=enemySpeed)}px)`;
             enemy_animation_frame = requestAnimationFrame(moveX);
             enemy_counter_function();
         }
 
         enemy_animation_frame = requestAnimationFrame(moveX);
     }
-    enemySpeed+=0.5
+    enemySpeed+=1
     speedMomo+=1
 }

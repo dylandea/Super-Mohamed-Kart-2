@@ -5,12 +5,15 @@ let enemySpeed = 1;
 const homePage = document.querySelector("#homePage");
 const startScreen = document.querySelector("#homePage");
 const buttonPlay = document.querySelector("#play");
+const score_text = document.querySelector(".score_text");
+
 
 buttonPlay.addEventListener("click", clickPlayHandler, false);
 
 function clickPlayHandler(e) {
     startScreen.style.opacity = 0;
     gamesItems.style.opacity = 1;
+    
     move();
     setTimeout(() => {
         generateEnemy();
@@ -88,7 +91,7 @@ let move_frame;
 // ==================================================================================
 
 let positionY = 250;
-let speedMomo = 7;
+let speedMomo = 8;
 
 function move() {
     
@@ -121,7 +124,7 @@ function clear_game() {
     gamesItems.style.opacity = 0;
     setTimeout(() => {
         location.reload(); 
-    }, 1500);
+    }, 2000);
     
     /* end_game = true;
     gamesItems.style.opacity = 0;
