@@ -17,40 +17,25 @@ body {
 }
 
 #homePage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-    margin: 0;
-    width: 80vw;
-    height: 80vh;
-    display: block;
-    cursor: default;
-    user-select: none;
-    box-sizing: content-box;
-    background-image: url("../Super-Mohamed-Kart-2/image/homePage.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    z-index: 1;
-    transition: opacity 1;
-
-  }
-
-  #scoreboard {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 400px;
-    height: 200px;
-    display: block;
-    cursor: default;
-    user-select: none;
-    box-sizing: content-box;
-    background-color: #FFF;
-    z-index: 1;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  margin: 0;
+  width: 80vw;
+  height: 80vh;
+  display: block;
+  cursor: default;
+  user-select: none;
+  box-sizing: content-box;
+  background-image: url("../Super-Mohamed-Kart-2/image/homePage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+  transition: opacity 1;
+}
 
 .graphics {
   position: fixed;
@@ -95,12 +80,10 @@ body {
 }
 
 .blink {
-    animation: blinker 1s linear infinite;
+  animation: blinker 1s linear infinite;
 }
 @keyframes blinker {
-    30% {
-        opacity: 0;
-    }
+  30% {
+    opacity: 0;
+  }
 }
-
-

@@ -1,8 +1,14 @@
 const momo = document.querySelector("#momo");
 const homePage = document.querySelector("#homePage");
-const play = document.querySelector("#homePage");
+const startScreen = document.querySelector("#homePage");
+const buttonPlay = document.querySelector("#play");
 
-play.style.cssText= `opacity: 0;`;
+buttonPlay.addEventListener("click", clickPlayHandler, false);
+
+function clickPlayHandler(e) {
+    startScreen.style.cssText= `opacity: 0;`;
+}
+
 
 
 // momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
@@ -32,6 +38,7 @@ function keyDownHandler(e) {
         // move UP ///////////
         //console.log("gauche");
     } else if (e.keyCode == 32) {
+     
         pull_pressed = true;
         // PULL ///////////
         console.log('pull')
