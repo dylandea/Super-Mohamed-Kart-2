@@ -2,6 +2,20 @@ const momo = document.querySelector("#momo");
 const div_game = document.querySelector(".game");
 const gamesItems = document.querySelector(".game_items");
 let enemySpeed = 1;
+const homePage = document.querySelector("#homePage");
+const startScreen = document.querySelector("#homePage");
+const buttonPlay = document.querySelector("#play");
+
+buttonPlay.addEventListener("click", clickPlayHandler, false);
+
+function clickPlayHandler(e) {
+    startScreen.style.cssText= `opacity: 0;`;
+}
+
+
+
+// momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
+// const momo_content = document.querySelector(".momo_content");
 let height, width;
 let resize_Frame = 135;
 let end_game = false;
@@ -25,6 +39,7 @@ function keyDownHandler(e) {
     } else if (e.keyCode == 39) {
         left_pressed = true;
     } else if (e.keyCode == 32) {
+     
         pull_pressed = true;
     }
 }
