@@ -37,7 +37,7 @@ function generateEnemy() {
         character = possibleEnemiesCharacters[Math.floor(Math.random() * possibleEnemiesCharacters.length)];
 		enemy = document.createElement("span");
 		enemy.className = `enemy`;
-		div_game.append(enemy);
+		gamesItems.append(enemy);
 		enemy = document.querySelectorAll(`.enemy`)[i];
 		enemy.style.cssText = `
         position: absolute;

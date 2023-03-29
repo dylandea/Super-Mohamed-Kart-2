@@ -9,7 +9,12 @@ const buttonPlay = document.querySelector("#play");
 buttonPlay.addEventListener("click", clickPlayHandler, false);
 
 function clickPlayHandler(e) {
-    startScreen.style.cssText= `opacity: 0;`;
+    startScreen.style.opacity = 0;
+    gamesItems.style.opacity = 1;
+    move();
+    setTimeout(() => {
+        generateEnemy();
+    }, 1000);
 }
 
 
@@ -106,16 +111,19 @@ function move() {
     move_frame = requestAnimationFrame(move);
 };
 
-move();
+
 
 //délai avant première apparition des ennemies, donc délai avant début du jeu
-setTimeout(() => {
-    generateEnemy();
-}, 2000);
+
 
 
 function clear_game() {
-    end_game = true;
+    gamesItems.style.opacity = 0;
+    setTimeout(() => {
+        location.reload(); 
+    }, 1500);
+    
+    /* end_game = true;
     gamesItems.style.opacity = 0;
 
         const enemies = document.querySelectorAll(`.enemy`);
@@ -125,7 +133,7 @@ function clear_game() {
 
 
     cancelAnimationFrame(enemy_animation_frame);
-    cancelAnimationFrame(move_frame);
+    cancelAnimationFrame(move_frame); */
     
 }
 

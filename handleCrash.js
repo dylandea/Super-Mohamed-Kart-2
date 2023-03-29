@@ -79,6 +79,8 @@ function handleCrash() {
             );
 
             enemies[i].remove();
+
+            
             clear_game();
         }
         

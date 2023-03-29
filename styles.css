@@ -65,6 +65,10 @@ body {
     padding: 0;
 }
 
+.game_items {
+  opacity: 0;
+}
+
 .blink {
   animation: blinker 1s linear infinite;
 }
