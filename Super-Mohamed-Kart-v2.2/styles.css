@@ -1,0 +1,119 @@
+html {
+    height: auto;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: absolute;
+    overflow: hidden;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    cursor: default;
+    user-select: none;
+    box-sizing: content-box;
+}
+
+#homePage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    margin: 0;
+    width: 80vw;
+    height: 90vh;
+    display: block;
+    cursor: default;
+    user-select: none;
+    box-sizing: content-box;
+    background-image: url("./image/homePage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+    transition: opacity 1;
+}
+
+.sliding-background {
+    position: absolute;
+    background: url("image/route.png") repeat-x;
+    background-size: contain;
+    height: 100%;
+    width: 20000px;
+    animation: slide 30s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-9000px, 0, 0);
+    }
+}
+
+.score {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 10%;
+    text-align: center;
+    padding: 0.1em 2em;
+    font-size: clamp(0.5em, 6vmin, 2em);
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.377);
+    margin: 5vmin 5vmin;
+    border-radius: 0.9em;
+    box-shadow: 0 0 10px 1px rgb(255, 255, 255), inset 0 0 15px -1px rgba(255, 255, 255, 0.651);
+}
+
+#momo {
+    position: absolute;
+    height: 13%;
+    width: 17%;
+    background: url("image/momo.png") no-repeat;
+    background-size: contain;
+    margin: 0;
+    padding: 0;
+}
+
+.game_items {
+    opacity: 0;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    30% {
+        opacity: 0;
+    }
+}
+
+.shoot_momo_class {
+    z-index: 5;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: url("image/Chococo.png") no-repeat;
+    background-size: contain;
+}
+
+.score_number {
+    position: absolute;
+    left: 38%;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+}
