@@ -113,7 +113,7 @@ function shoot_momo() {
     };
 }
 
-let positionY = 250;
+let positionY = 700;
 let speedMomo = 8;
 
 function move() {
