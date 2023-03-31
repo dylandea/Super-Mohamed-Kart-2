@@ -89,7 +89,7 @@ let move_frame;
 let game, span;
 let boolean_shoot = true;
 let pain_au_chocolat_positionX = 2;
-let speed_shoot_momo = 4;
+let speed_shoot_momo = 18;
 
 function shoot_momo() {
 
