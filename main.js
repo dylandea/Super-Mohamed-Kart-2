@@ -113,7 +113,7 @@ function shoot_momo() {
     };
 }
 
-let positionY = 700;
+let positionY;
 let speedMomo = 8;
 
 function move() {
@@ -121,14 +121,15 @@ function move() {
 
     momo.style.cssText += `transform: translateY(${positionY}px); left: 50px;`;
 
-
+    window_dimension();
+    positionY = height/2;
     position();
     if (right_pressed) {
         positionY -= speedMomo;
     } else if (left_pressed) {
         positionY += speedMomo;
     }
-    window_dimension();
+    
     if (shoot_pressed && boolean_shoot) {
         shoot_momo();
     }
