@@ -22,14 +22,16 @@ function handleCrash() {
     for (let i = 0; i < enemies.length; i++) {
         if (checkIfTwoRectIntersect(momo, 150, enemies[i])) {
 
-            // inner_text_style("Vous ne savez pas conduire...", 5, 2);
+            end_game = true;
+            cancelAnimationFrame(enemy_animation_frame);
 
-            // spaceship_explodes_audio();
+            pile_up_audio_function();
+
+            // inner_text_style("Vous ne savez pas conduire...", 5, 2);
 
             let momoLocation = momo.getBoundingClientRect();
             let enemyLocation = enemies[i].getBoundingClientRect();
 
-
             let vX = Math.round(momoLocation.x + resize_Frame * 0.7);
             let vY = Math.round(momoLocation.y + resize_Frame * 0.52);
             let eX = Math.round(
@@ -40,61 +42,54 @@ function handleCrash() {
             );
 
             //explosion de momo
-            const explosion1 = new Start_explose();
-            explosion1.explose(
+
+            const explosion_momo = new Start_explose();
+            explosion_momo.explose(
+                vX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
+                vY,
+                100
+            );
+            const explosion_momo1 = new Start_explose();
+            explosion_momo1.explose(
                 vX,
                 vY,
                 100
             );
 
-            const explosion2 = new Start_explose();
-            explosion2.explose(
-                vX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
-                vY,
-                resize_Frame * 0.5,
+            //explosion de l'ennemi
+
+            const explosion_enemy = new Start_explose();
+            explosion_enemy.explose(
+                eX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
+                eY,
                 100
+
             );
 
-            //explosion de l'ennemi
-            const explosion_enemy_spaceship_1 = new Start_explose();
-            explosion_enemy_spaceship_1.explose(
+
+            const explosion_enemy1 = new Start_explose();
+            explosion_enemy1.explose(
                 eX,
                 eY,
                 100
-            );
 
-            const explosion_enemy_spaceship_2 = new Start_explose();
-            explosion_enemy_spaceship_2.explose(
-                eX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
-                eY,
-                resize_Frame * 0.5,
-                100
             );
 
             enemies[i].remove();
 
-
             clear_game();
         }
 
-        /* arrete le jeu si points en dessous de 0 à cause du franchissement de la ligne
-        else if (score < 0) {
-            inner_text_style(config.configure_text.mission_failed, 5, 0);
-            clear_game();
-        } */
-
         if (checkIfTwoRectIntersect(shoot_momo_class, 150, enemies[i])) {
 
-            // inner_text_style("Vous ne savez pas conduire...", 5, 2);
+            destroy_audio_function();
 
-            // spaceship_explodes_audio();
-
-            let momoLocation = shoot_momo_class.getBoundingClientRect();
+            // let momoLocation = shoot_momo_class.getBoundingClientRect();
             let enemyLocation = enemies[i].getBoundingClientRect();
 
 
-            let vX = Math.round(momoLocation.x + resize_Frame * 0.7);
-            let vY = Math.round(momoLocation.y + resize_Frame * 0.52);
+            // let vX = Math.round(momoLocation.x + resize_Frame * 0.7);
+            // let vY = Math.round(momoLocation.y + resize_Frame * 0.52);
             let eX = Math.round(
                 enemyLocation.x + resize_Frame * 0.48
             );
@@ -102,38 +97,23 @@ function handleCrash() {
                 enemyLocation.y + resize_Frame * 0.52
             );
 
-            //explosion de momo
-            const explosion1 = new Start_explose();
-            explosion1.explose(
-                vX,
-                vY,
-                100
-            );
-
-            //console.log("explosion1", explosion1)
-
-            const explosion2 = new Start_explose();
-            explosion2.explose(
-                vX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
-                vY,
-                resize_Frame * 0.5,
-                100
-            );
-
             //explosion de l'ennemi
-            const explosion_enemy_spaceship_1 = new Start_explose();
-            explosion_enemy_spaceship_1.explose(
-                eX,
-                eY,
-                100
-            );
 
-            const explosion_enemy_spaceship_2 = new Start_explose();
-            explosion_enemy_spaceship_2.explose(
+            const explosion_enemy2 = new Start_explose();
+            explosion_enemy2.explose(
                 eX + getRandomInt(-resize_Frame * 1.04, resize_Frame * 1.04),
                 eY,
-                resize_Frame * 0.5,
-                100
+                20
+
+            );
+
+
+            const explosion_enemy3 = new Start_explose();
+            explosion_enemy3.explose(
+                eX,
+                eY,
+                20
+
             );
 
             enemies[i].remove();
@@ -147,8 +127,6 @@ function handleCrash() {
         }
     }
 }
-
-
 
 // start_explose.js
 let random = (mini, maxi) => Math.floor(Math.random() * mini) + maxi;

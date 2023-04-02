@@ -8,8 +8,10 @@ const buttonPlay = document.querySelector("#play");
 const score_text = document.querySelector(".score_text");
 const shoot_momo_class = document.querySelector(".shoot_momo_class");
 
-
 buttonPlay.addEventListener("click", clickPlayHandler, false);
+initSound();
+start_audio_function();
+
 
 function clickPlayHandler(e) {
     startScreen.style.opacity = 0;
@@ -21,12 +23,11 @@ function clickPlayHandler(e) {
     }, 1000);
 }
 
-
-
 // momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
 // const momo_content = document.querySelector(".momo_content");
 let height, width;
-let resize_Frame = 135;
+let resize_Frame = 160;
+// let resize_Frame = 135;
 let end_game = false;
 
 function window_dimension() {
@@ -41,7 +42,6 @@ let right_pressed = false;
 let left_pressed = false;
 let shoot_pressed = false;
 
-
 // MOVE keyboard key control
 function keyDownHandler(e) {
     if (e.keyCode == 37) {
@@ -49,6 +49,7 @@ function keyDownHandler(e) {
     } else if (e.keyCode == 39) {
         left_pressed = true;
     } else if (e.keyCode == 32) {
+
 
         shoot_pressed = true;
     }
@@ -66,7 +67,6 @@ function keyUpHandler(e) {
     }
 }
 // key control keyboard STOP
-
 
 // frame momo position to not exit the field - position frame momo pour ne pas sortir du champ
 
@@ -99,13 +99,13 @@ function shoot_momo() {
     if (shoot_pressed && boolean_shoot) {
         positionY_shoot_momo = momo_position_Y;
         boolean_shoot = false;
+        threw_audio_function();
     }
 
     if (pain_au_chocolat_positionX < width) {
         shoot_momo_class.style.cssText += `transform: translateX(${pain_au_chocolat_positionX}px); opacity:1; left: 100px;top:${positionY_shoot_momo}px`;
         pain_au_chocolat_positionX += speed_shoot_momo;
     }
-
 
     if (pain_au_chocolat_positionX >= width) {
         pain_au_chocolat_positionX = 0;
@@ -114,14 +114,13 @@ function shoot_momo() {
     };
 }
 
-let positionY = height/2;
+let positionY = height / 2;
 let speedMomo = 8;
 
 function move() {
     move_frame = requestAnimationFrame(move);
 
     momo.style.cssText += `transform: translateY(${positionY}px); left: 50px;`;
-
 
     position();
     if (right_pressed) {
@@ -136,17 +135,12 @@ function move() {
     updateScore();
     handleCrash();
 
-
-
 };
-
-
 
 //délai avant première apparition des ennemies, donc délai avant début du jeu
 
-
-
 function clear_game() {
+    cancelAnimationFrame(move_frame);
     gamesItems.style.opacity = 0;
     setTimeout(() => {
         location.reload();
