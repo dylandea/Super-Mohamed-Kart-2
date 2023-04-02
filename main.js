@@ -10,17 +10,15 @@ const shoot_momo_class = document.querySelector(".shoot_momo_class");
 
 buttonPlay.addEventListener("click", clickPlayHandler, false);
 initSound();
-start_audio_function();
-
 
 function clickPlayHandler(e) {
+    start_audio_function();
     startScreen.style.opacity = 0;
     gamesItems.style.opacity = 1;
-
     move();
     setTimeout(() => {
         generateEnemy();
-    }, 1000);
+    }, 3000);
 }
 
 // momo.style.cssText += `transform: translateY(${positionY}px);left: 20px;`;
